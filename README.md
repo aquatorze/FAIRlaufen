@@ -2,7 +2,7 @@
 
 ## Repo clonen
 
-in Eingabeaufforderung ``git clone https://TOKEN@github.com/aquatorze/FAIRlaufen.git >euer Ordner<`` (der Ordner wird im Laufwerk C: unter Benutzer abgespeichert wird, in diesem Ordner wird das geklonte Repo abgelegt - ihr könnt auch einen anderen Ordnernamen wählen)
+in Eingabeaufforderung ``git clone https://TOKEN@github.com/aquatorze/FAIRlaufen.git >euer Ordner<`` (der Ordner wird im Laufwerk C: unter Benutzer abgespeichert wird, in diesem Ordner wird das geklonte Repo abgelegt)
 
 ## Dateien zum Repo hinzufügen
 

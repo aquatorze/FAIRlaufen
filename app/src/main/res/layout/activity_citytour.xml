@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".CitytourActivity"
-    android:background="#F2F2F2">
+    android:background="#F2F2F2"
+    android:id="@+id/citytour_screen">
 
     <TextView
         android:layout_width="match_parent"

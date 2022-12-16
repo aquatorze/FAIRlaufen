@@ -24,7 +24,9 @@
         android:background="#C5E0B4"
         android:id="@+id/citytour"
         android:layout_marginBottom="20sp"
-        android:onClick="onClickStartCitytour">
+        android:focusable="true"
+        android:clickable="true"
+        >
         <TextView
             android:id="@+id/title_citytour"
             android:layout_width="wrap_content"
@@ -35,6 +37,7 @@
             android:textStyle="bold"
             android:layout_marginTop="40sp"
             android:layout_marginLeft="30sp"
+            android:clickable="false"
             />
         <TextView
             android:id="@+id/text_citytour"
@@ -46,6 +49,7 @@
             android:layout_below="@id/title_citytour"
             android:layout_marginLeft="30sp"
             android:layout_marginTop="40sp"
+            android:clickable="false"
             />
         <ImageView
             android:id="@+id/icon_citytour"
@@ -55,6 +59,7 @@
             android:layout_toRightOf="@id/text_citytour"
             android:layout_marginRight="30sp"
             android:layout_marginTop="160sp"
+            android:clickable="false"
             />
     </RelativeLayout>
 
@@ -63,8 +68,7 @@
         android:layout_height="350sp"
         android:layout_gravity="center"
         android:background="#B4C7E7"
-        android:id="@+id/discover"
-        android:onClick="onClickStartDiscover">
+        android:id="@+id/discover">
         <TextView
             android:id="@+id/title_discover"
             android:layout_width="wrap_content"

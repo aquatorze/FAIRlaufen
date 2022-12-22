@@ -2,9 +2,16 @@ package com.tudresden.fairlaufen;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,24 +21,4 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
     }
 
-    //public void onClickStartDiscover(View view){
-        //Intent intent = new Intent(this, HomeActivity.class);
-        //startActivity(intent);
-    //}
-
-    //public void onClickTour1(View view){
-        //Intent intent = new Intent(this, Tour1Activity.class);
-        //startActivity(intent);
-    //}
-
-    //public void onClickTour2(View view){
-        //Intent intent = new Intent(this, Tour2Activity.class);
-        //startActivity(intent);
-    //}
-
-    public void onClickStartMap(View view){
-        Intent intent = new Intent(this, MapActivity.class);
-
-        startActivity(intent);
-    }
 }

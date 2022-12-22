@@ -7,4 +7,5 @@
     <string name="button_text_discover">Entdecke nachhaltige Orte in Dresden Neustadt</string>
     <string name="button_tour1">Rundgang 1</string>
     <string name="button_tour2">Rundgang 2</string>
+    <string name="popup_text">Hallo, das ist eine schöne App! :D</string>
 </resources>

@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".HomeActivity"
-    android:background="@color/background_grey">
+    android:background="@color/background_grey"
+    android:id="@+id/home_screen">
 
     <TextView
         android:layout_width="match_parent"

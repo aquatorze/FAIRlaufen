@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -15,7 +16,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
     RelativeLayout rl_citytour;
-    View popupView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         //onStart();
-        showPopup(popupView);
+        showPopup();
 
         rl_citytour = (RelativeLayout) findViewById(R.id.citytour);
         rl_citytour.setOnClickListener(new View.OnClickListener() {
@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
                 onClickStartCitytour();
             }
         });
+
     }
 
     /*@Override
@@ -60,19 +61,23 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void showPopup(View view){
+    public void showPopup(){
         // create popup
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_window, null);
-        PopupWindow pw = new PopupWindow(popupView, 300, 300, true);
+        View popupView = getLayoutInflater().inflate(R.layout.popup_window, null);
+        View mainView = findViewById(R.id.text_citytour).getRootView();
+
+        //DisplayMetrics entnehmen die Eigenschaften des Displays des aktuellen Geräts --> width
+        DisplayMetrics display = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(display);
+        PopupWindow pw = new PopupWindow(popupView, display.widthPixels * 9/10 , 300, true);
         pw.setFocusable(false);
         pw.setTouchable(true);
         pw.setOutsideTouchable(true);
 
         // show the popup window
-        popupView.post(new Runnable() {
+        mainView.post(new Runnable() {
             public void run() {
-                pw.showAtLocation(popupView,Gravity.CENTER, 0, 0);
+                pw.showAtLocation(mainView,Gravity.CENTER, 0, 0);
             }
         });
         //pw.showAtLocation(popupView, Gravity.CENTER, 0, 0);

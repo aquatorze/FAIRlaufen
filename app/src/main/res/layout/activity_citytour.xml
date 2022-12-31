@@ -25,7 +25,7 @@
         android:layout_gravity="center"
         android:background="@color/background_green"
         android:layout_marginBottom="20sp"
-        android:onClick="onClickTour1">
+        android:onClick="onClickMap">
         <TextView
             android:id="@+id/title_tour1"
             android:layout_width="wrap_content"
@@ -54,7 +54,7 @@
         android:layout_gravity="center"
         android:background="@color/background_green"
         android:layout_marginBottom="20sp"
-        android:onClick="onClickTour2">
+        android:onClick="onClickMap">
         <TextView
             android:id="@+id/title_tour2"
             android:layout_width="wrap_content"

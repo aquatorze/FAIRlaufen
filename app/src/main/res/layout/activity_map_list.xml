@@ -26,7 +26,7 @@
             android:fontFamily="serif"
             android:padding="24dp"
             android:textSize="18sp"
-            android:text="List of Elements"
+            android:text="Orte"
             android:textColor="@android:color/white" />
 
         <Button
@@ -38,7 +38,12 @@
             android:onClick="onClickCollapse"
             android:text="^"/>
     </LinearLayout>
-    <TextView
+    <ListView
+        android:id="@+id/list_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bottom_sheet_header"/>
+    <!--<TextView
         android:id="@+id/element_1"
         android:layout_below="@id/bottom_sheet_header"
         android:layout_height="wrap_content"
@@ -51,5 +56,5 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
-        android:text="Testelement 2" />
+        android:text="Testelement 2" />-->
 </RelativeLayout>

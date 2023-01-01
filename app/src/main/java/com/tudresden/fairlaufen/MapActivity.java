@@ -11,6 +11,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -48,6 +49,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
@@ -55,6 +58,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     String mode = "foot-walking";
     private int tour;
+    List<Marker> markerList = new ArrayList<Marker>();
 
     static DatabaseHelper dbHelper;
     SQLiteDatabase database;
@@ -126,7 +130,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ListView listView = findViewById(R.id.list_map);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.list_item_map, place_names);
         listView.setAdapter(adapter);
-
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id){
+                String name = listView.getItemAtPosition(position).toString();
+                Marker marker = markerList.get(position);
+                marker.showInfoWindow();
+                CameraPosition cam_pos = new CameraPosition.Builder()
+                        .target(marker.getPosition())
+                        .zoom(13)
+                        .build();
+                mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cam_pos));
+            }
+        });
 
     }
 
@@ -201,11 +217,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         for(int i = 0; i < length; i++){
             Double latitude = Double.parseDouble(cursor.getString(index_lat));
             Double longitude = Double.parseDouble(cursor.getString(index_lon));
-             cursor.getString(index_name);
-            mMap.addMarker(new MarkerOptions()
+            cursor.getString(index_name);
+            Marker marker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
                     .title(cursor.getString(index_name))
                     .icon(BitmapDescriptorFactory.defaultMarker(120)));
+            markerList.add(marker);
             cursor.moveToNext();
         }
     }

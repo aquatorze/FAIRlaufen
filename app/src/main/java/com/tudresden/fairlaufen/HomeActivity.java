@@ -22,7 +22,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //onStart();
         showPopup();
 
         rl_citytour = (RelativeLayout) findViewById(R.id.citytour);
@@ -34,27 +33,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
-
-    /*@Override
-    protected void onStart() {
-        super.onStart();
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View popupView = inflater.inflate(R.layout.popup_window, null);
-        PopupWindow pw = new PopupWindow(popupView, 300, 300, true);
-        pw.setFocusable(false);
-        pw.setTouchable(true);
-        pw.setOutsideTouchable(true);
-        pw.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-
-        // dismiss the popup window when touched
-        popupView.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                pw.dismiss();
-                return true;
-            }
-        });
-    }*/
 
     public void onClickStartCitytour(){
         Intent intent = new Intent(this, CitytourActivity.class);
@@ -69,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         //DisplayMetrics entnehmen die Eigenschaften des Displays des aktuellen Geräts --> width
         DisplayMetrics display = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(display);
-        PopupWindow pw = new PopupWindow(popupView, display.widthPixels * 9/10 , 300, true);
+        PopupWindow pw = new PopupWindow(popupView, display.widthPixels * 9/10 , 1120, true);
         pw.setFocusable(false);
         pw.setTouchable(true);
         pw.setOutsideTouchable(true);
@@ -80,7 +58,6 @@ public class HomeActivity extends AppCompatActivity {
                 pw.showAtLocation(mainView,Gravity.CENTER, 0, 0);
             }
         });
-        //pw.showAtLocation(popupView, Gravity.CENTER, 0, 0);
 
         // dismiss the popup window when touched
         popupView.setOnTouchListener(new View.OnTouchListener() {

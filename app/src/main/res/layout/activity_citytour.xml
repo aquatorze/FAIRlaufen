@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
@@ -18,14 +14,14 @@
             android:gravity="center"
             android:text="@string/button_title_citytour"
             android:textColor="@color/text_black"
-            android:textSize="40sp"
+            android:textSize="46sp"
             android:textStyle="bold"
-            android:layout_margin="30sp"/>
+            android:layout_margin="10sp"/>
 
         <RelativeLayout
             android:id="@+id/tour1"
             android:layout_width="350sp"
-            android:layout_height="350sp"
+            android:layout_height="275sp"
             android:layout_gravity="center"
             android:background="@color/background_green"
             android:layout_marginBottom="20sp"
@@ -37,10 +33,9 @@
                 android:layout_centerHorizontal="true"
                 android:text="@string/button_tour1"
                 android:textColor="@color/text_black"
-                android:textSize="40sp"
+                android:textSize="35sp"
                 android:textStyle="bold"
-                android:layout_marginTop="40sp"
-                android:layout_marginBottom="20sp"
+                android:layout_marginTop="20sp"
                 android:gravity="center"
                 />
             <ImageView
@@ -49,13 +44,14 @@
                 android:src="@drawable/icon_city_tour"
                 android:layout_below="@id/title_tour1"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="10sp"
                 />
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/tour2"
             android:layout_width="350sp"
-            android:layout_height="350sp"
+            android:layout_height="275sp"
             android:layout_gravity="center"
             android:background="@color/background_green"
             android:layout_marginBottom="20sp"
@@ -67,10 +63,9 @@
                 android:layout_centerHorizontal="true"
                 android:text="@string/button_tour2"
                 android:textColor="@color/text_black"
-                android:textSize="40sp"
+                android:textSize="35sp"
                 android:textStyle="bold"
-                android:layout_marginTop="40sp"
-                android:layout_marginBottom="40sp"
+                android:layout_marginTop="20sp"
                 />
             <ImageView
                 android:layout_width="wrap_content"
@@ -78,7 +73,7 @@
                 android:src="@drawable/icon_shopping"
                 android:layout_below="@id/title_tour2"
                 android:layout_centerHorizontal="true"
+                android:layout_marginTop="20sp"
                 />
         </RelativeLayout>
     </LinearLayout>
-</ScrollView>

@@ -9,52 +9,43 @@
     android:background="@color/white"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     >
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/bottom_sheet_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_green"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <ImageView
+            android:id="@+id/bottom_sheet_grapple"
+            android:src="@drawable/ic_bottom_sheet_grapple"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:fontFamily="serif"
-            android:padding="24dp"
-            android:textSize="18sp"
+            android:gravity="center"
+            android:layout_margin="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="10dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
             android:text="Orte"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_below="@id/bottom_sheet_grapple"/>
 
-        <Button
+        <!--<Button
             android:id="@+id/bottom_sheet_arrow"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
             android:onClick="onClickCollapse"
-            android:text="^"/>
-    </LinearLayout>
+            android:text="^"/>-->
+    </RelativeLayout>
     <ListView
         android:id="@+id/list_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/bottom_sheet_header"/>
-    <!--<TextView
-        android:id="@+id/element_1"
-        android:layout_below="@id/bottom_sheet_header"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:text="Testelement 1" />
-
-    <TextView
-        android:layout_below="@id/element_1"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_width="match_parent"
-        android:text="Testelement 2" />-->
 </RelativeLayout>

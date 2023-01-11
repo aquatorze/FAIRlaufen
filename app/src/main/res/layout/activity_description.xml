@@ -1,18 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_green"
-    >
-    <TextView
-        android:id="@+id/text_description"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Platzhalter"
-        android:textColor="@color/text_black"
-        android:textSize="35sp"
-        android:textStyle="bold"
-        android:layout_marginTop="40sp"
-        android:layout_marginLeft="30sp"
-        />
-</RelativeLayout>
+    android:background="@color/background_bluegrey">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_bluegrey">
+
+        <TextView
+            android:id="@+id/Namen"
+            android:text="Hallo das ist ein Test"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_black"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"/>
+
+        <TextView
+            android:id="@+id/Kategorie"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            android:layout_below="@id/Namen"
+            android:textColor="@color/text_black"
+            android:textSize="18sp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"/>
+
+        <!--<ImageView
+            android:id="@+id/Bild"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:scaleType="centerCrop"
+            android:layout_below="@id/Kategorie"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"/> -->
+
+        <TextView
+            android:id="@+id/Beschreibung"
+            android:layout_centerHorizontal="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Kategorie"
+            android:textColor="@color/text_black"
+            android:textSize="18sp"
+            android:layout_marginTop="40sp"
+            android:layout_marginLeft="30sp"/>
+
+        <TextView
+            android:id="@+id/Adresse"
+            android:layout_centerHorizontal="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Beschreibung"
+            android:textColor="@color/text_black"
+            android:textSize="15sp"
+            android:layout_marginTop="30sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"/>
+
+        <TextView
+            android:id="@+id/Webadresse"
+            android:autoLink="web"
+            android:textColorLink="@color/darkblue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/Adresse"
+            android:textSize="15sp"
+            android:layout_marginTop="5sp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"/>
+    </RelativeLayout>
+</ScrollView>

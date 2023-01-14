@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">FAIRlaufen</string>
     <string name="title_activity_map">MapActivity</string>
-    <string name="button_title_citytour">STADTRUNDGANG</string>
-    <string name="button_text_citytour">Entdecke zwei nachhaltige &#10;Stadtrund- &#10;gänge</string>
-    <string name="button_title_discover">ENTDECKEN</string>
+    <string name="button_title_citytour">Stadtrundgang</string>
+    <string name="button_text_citytour">Entdecke zwei nachhaltige &#10;Stadtrundgänge</string>
+    <string name="button_title_discover">Entdecken</string>
     <string name="button_text_discover">Entdecke nachhaltige Orte in Dresden Neustadt</string>
     <string name="button_tour1">Alternativ für Anfänger:innen</string>
     <string name="button_tour2">FAIRkleidet</string>

@@ -38,10 +38,13 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MapStyleOptions;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.maps.android.data.geojson.GeoJsonLayer;
 import com.google.maps.android.data.geojson.GeoJsonLineStringStyle;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -139,7 +142,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 marker.showInfoWindow();
                 CameraPosition cam_pos = new CameraPosition.Builder()
                         .target(marker.getPosition())
-                        .zoom(13)
+                        .zoom(15)
                         .build();
                 mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cam_pos));
             }
@@ -147,7 +150,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     }
 
-    public void onClickCollapse(View view) {
+    /*public void onClickCollapse(View view) {
         Button button = findViewById(R.id.bottom_sheet_arrow);
         if (sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED) {
             sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
@@ -156,7 +159,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             button.setText("^");
         }
-    }
+    }*/
 
     @SuppressLint("PotentialBehaviorOverride")
     @Override
@@ -169,27 +172,25 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         locationPermissionRequest.launch(PERMISSIONS);
 
         CameraPosition cam_pos = new CameraPosition.Builder()
-                .target(new LatLng(51.05, 13.74))
-                .zoom(13)
+                .target(new LatLng(51.06, 13.75))
+                .zoom(14)
                 .build();
         mMap.moveCamera(CameraUpdateFactory.newCameraPosition(cam_pos));
         mMap.setBuildingsEnabled(true);
 
-        addMarkersFromDB(dbCursor);
         Context context = this;
-        JSONObject geojsonData = addRoute(tour, context);
-        GeoJsonLayer routeLayer = new GeoJsonLayer(mMap, geojsonData);
-        GeoJsonLineStringStyle lineStyle = routeLayer.getDefaultLineStringStyle();
-        lineStyle.setColor(R.color.background_green);
-        routeLayer.addLayerToMap();
-
-
+        addRoute(tour, context, mMap);
+        addMarkersFromDB(dbCursor);
         mMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(@NonNull Marker marker) {
                 onMarkerTextClick(marker);
+
             }
         });
+
+
+
         //mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 100));
         /*MarkerOptions myMarker = new MarkerOptions()
                 .position(new LatLng(51.05, 13.74))
@@ -247,7 +248,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-    public JSONObject addRoute(int tour, Context context) {
+    public void addRoute(int tour, Context context, GoogleMap gMap) {
         String jsonString = "";
         String routename = "";
         switch (tour) {
@@ -265,11 +266,27 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             is.read(buffer);
             is.close();
             jsonString = new String(buffer, "UTF-8");
-            JSONObject jsonObject = new JSONObject(jsonString);
-            return jsonObject;
+            JSONObject geojsonData = new JSONObject(jsonString);
+
+            JSONArray jsonArray = geojsonData.getJSONArray("features").getJSONObject(0)
+                    .getJSONObject("geometry").getJSONArray("coordinates");
+            List<LatLng> latLngList = new ArrayList<>();
+            for(int i = 0; i < jsonArray.length(); i++){
+                double longitude = Double.parseDouble(jsonArray.getJSONArray(i).get(0).toString());
+                double latitude = Double.parseDouble(jsonArray.getJSONArray(i).get(1).toString());
+                latLngList.add(new LatLng(latitude, longitude));
+            }
+            Polyline polylineRoute = gMap.addPolyline(new PolylineOptions()
+                    .addAll(latLngList)
+                    .clickable(false)
+                    .color(R.color.background_green));
+            /*GeoJsonLayer routeLayer = new GeoJsonLayer(gMap, geojsonData);
+            GeoJsonLineStringStyle lineStyle = routeLayer.getDefaultLineStringStyle();
+            lineStyle.setColor(R.color.background_green);
+            routeLayer.addLayerToMap();*/
         } catch (Exception e) {
+            System.out.println(e);
             e.printStackTrace();
-            return null;
         }
     }
 

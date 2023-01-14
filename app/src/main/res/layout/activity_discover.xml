@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    tools:context=".DiscoverActivity"
+    android:id="@+id/discover_screen">
+
+    <TextView
+        android:id="@+id/text_view_id"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:text="DISCOVER"
+        android:textStyle="bold"
+        android:textColor="@android:color/black"
+        android:textSize="30dp"
+        android:background="#B4C7E7"
+        android:gravity="center"
+        />
+    <ExpandableListView
+        android:id="@+id/expandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+        android:divider="#7F7F7F"
+        android:dividerHeight="0.5dp"
+        android:childDivider="#7F7F7F"
+        android:layout_below="@id/text_view_id"/>
+</RelativeLayout>
+
+
+
+
+
+

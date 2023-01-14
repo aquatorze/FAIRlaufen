@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
     RelativeLayout rl_citytour;
+    RelativeLayout rl_discover;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,10 +33,23 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        rl_discover = (RelativeLayout) findViewById(R.id.discover);
+        rl_discover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClickStartDiscover();
+            }
+        });
+
     }
 
     public void onClickStartCitytour(){
         Intent intent = new Intent(this, CitytourActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickStartDiscover(){
+        Intent intent = new Intent(this, DiscoverActivity.class);
         startActivity(intent);
     }
 

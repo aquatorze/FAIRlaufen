@@ -27,6 +27,16 @@
         android:dividerHeight="0.5dp"
         android:childDivider="#7F7F7F"
         android:layout_below="@id/text_view_id"/>
+    <Button
+        android:id="@+id/button_Discover"
+        android:text="Zur Karte"
+        android:onClick="onClickToMap"
+        android:layout_below="@+id/expandableListView"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="380dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
 </RelativeLayout>
 
 

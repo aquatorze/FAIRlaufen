@@ -3,6 +3,7 @@ package com.tudresden.fairlaufen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListAdapter;
@@ -37,10 +38,16 @@ public class DiscoverActivity extends AppCompatActivity {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-                // Hier Funktion für Karte einsetzen
+                // Hier Funktion für Beschreibung einsetzen einsetzen
                 return false;
             }
         });
+
+
+    }
+
+    public void onClickToMap(){
+        //Hier Funktion für Karte einsetzen
     }
 
 }

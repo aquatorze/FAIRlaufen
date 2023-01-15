@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ public class DiscoverActivity extends AppCompatActivity {
     ExpandableListAdapter expandableListAdapter;
     List<String> expandableListTitle;
     HashMap<String, List<String>> expandableListDetail;
+    boolean[] categoryArray = new boolean[6];
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -32,7 +34,6 @@ public class DiscoverActivity extends AppCompatActivity {
         expandableListTitle = new ArrayList<String>(expandableListDetail.keySet());
         expandableListAdapter = new CustomExpandableListAdapter(this, expandableListTitle, expandableListDetail);
         expandableListView.setAdapter(expandableListAdapter);
-
 
         expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
             @Override
@@ -46,10 +47,21 @@ public class DiscoverActivity extends AppCompatActivity {
 
     }
 
+    public void onClickCheckbox(View view){
+        boolean checked = ((CheckBox) view).isChecked();
+        if(checked){
+            categoryArray[view.getId()] = true;
+        }
+        else{
+            categoryArray[view.getId()] = false;
+        }
+    }
 
 
-    public void onClickToMap(){
-        //Hier Funktion für Karte einsetzen
+    public void onClickToMap(View view){
+        Intent intent = new Intent(this, MapActivity.class);
+        intent.putExtra("category", categoryArray);
+        startActivity(intent);
     }
 
 }

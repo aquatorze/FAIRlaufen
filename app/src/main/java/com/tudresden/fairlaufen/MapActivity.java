@@ -41,28 +41,20 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
-import com.google.maps.android.data.geojson.GeoJsonLayer;
-import com.google.maps.android.data.geojson.GeoJsonLineStringStyle;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MapActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    String mode = "foot-walking";
     private int tour;
-    List<Marker> markerList = new ArrayList<Marker>();
+    List<Marker> markerList = new ArrayList<>();
 
 
     static DatabaseHelper dbHelper;
@@ -107,18 +99,59 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         try {
             dbHelper.createDataBase();
         } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
         database = dbHelper.getDataBase();
 
-        if (intent.getIntExtra("type", 1) == R.id.tour1) {
-            System.out.println("1. Button gedrueckt");
-            tour = 1;
-            dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE city_tour_type LIKE 'Alternativ für AnfängerInnen'", null);
-        } else {
-            System.out.println("2. Button gedrueckt");
-            tour = 2;
-            dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE city_tour_type LIKE 'FAIRkleidet'", null);
+        switch (intent.getIntExtra("type", 1)) {
+            case R.id.tour1: {
+                System.out.println("1. Button gedrueckt");
+                tour = 1;
+                dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE city_tour_type LIKE 'Alternativ für AnfängerInnen'", null);
+                break;
+            }
+            case R.id.tour2: {
+                System.out.println("2. Button gedrueckt");
+                tour = 2;
+                dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE city_tour_type LIKE 'FAIRkleidet'", null);
+            }
         }
+
+        if(intent.getBooleanArrayExtra("category") != null){
+            String searchTerm = "";
+            boolean[] array = intent.getBooleanArrayExtra("category");
+            for(int i = 0; i < array.length; i++){
+                if(array[i]){
+                    if(!searchTerm.equals("")){
+                        searchTerm += " OR ";
+                    }
+                    switch(i){
+                        case 0:
+                            searchTerm += "category LIKE 'Second Hand'";
+                            break;
+                        case 1:
+                            searchTerm += "category LIKE 'Kosmetik'";
+                            break;
+                        case 2:
+                            searchTerm += "category LIKE 'Bekleidung'";
+                            break;
+                        case 3:
+                            searchTerm += "category LIKE 'Lebensmittel'";
+                            break;
+                        case 4:
+                            searchTerm += "category LIKE 'Essen & Trinken'";
+                            break;
+                        case 5:
+                            searchTerm += "category LIKE 'Sonstiges'";
+                            break;
+                    }
+                }
+            }
+            dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE " + searchTerm, null);
+
+        }
+
+
         int length = dbCursor.getCount();
         dbCursor.moveToFirst();
 
@@ -137,9 +170,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String name = listView.getItemAtPosition(position).toString();
                 Marker marker = markerList.get(position);
                 marker.showInfoWindow();
+                sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
                 CameraPosition cam_pos = new CameraPosition.Builder()
                         .target(marker.getPosition())
                         .zoom(15)
@@ -188,31 +221,6 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             }
         });
-
-
-
-        //mMap.moveCamera(CameraUpdateFactory.newLatLngBounds(builder.build(), 100));
-        /*MarkerOptions myMarker = new MarkerOptions()
-                .position(new LatLng(51.05, 13.74))
-                .anchor(0.5f, 1) //An welchem Punkt des Markers sollen die Koordinaten liegen
-                .title("HÜL/S590")
-                .snippet("Computer Lab");
-        mMap.addMarker(myMarker);
-        mMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(LatLng newPos) {
-                MarkerOptions clickMarker = new MarkerOptions().position(newPos);
-                mMap.addMarker(clickMarker);
-                String url = "https://api.openrouteservice.org/v2/directions/" +
-                        mode +
-                        "?api_key=5b3ce3597851110001cf62487ffe36ced36242aeb94b33ecb7c2fff3" +
-                        "&start=" + myMarker.getPosition().longitude + "," + myMarker.getPosition().latitude +
-                        "&end=" + clickMarker.getPosition().longitude + "," + clickMarker.getPosition().latitude;
-                new DownloadGeoJsonFile().execute(url);
-            }
-        });*/
-
-
     }
 
     private void addMarkersFromDB(Cursor cursor) {
@@ -222,15 +230,36 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         int index_name = cursor.getColumnIndex("name");
         int index_lat = cursor.getColumnIndex("latitude");
         int index_lon = cursor.getColumnIndex("longitude");
+        int index_cat = cursor.getColumnIndex("category");
 
         for (int i = 0; i < length; i++) {
             Double latitude = Double.parseDouble(cursor.getString(index_lat));
             Double longitude = Double.parseDouble(cursor.getString(index_lon));
             cursor.getString(index_name);
+            int markerColor;
+            switch(cursor.getString(index_cat)){
+                case "Second Hand":
+                    markerColor = 60;
+                    break;
+                case "Kosmetik":
+                    markerColor = 270;
+                    break;
+                case "Bekleidung":
+                    markerColor = 210;
+                    break;
+                case "Lebensmittel":
+                    markerColor = 30;
+                    break;
+                case "Essen & Trinken":
+                    markerColor = 120;
+                    break;
+                default:
+                    markerColor = 180;
+            }
             Marker marker = mMap.addMarker(new MarkerOptions()
                     .position(new LatLng(latitude, longitude))
                     .title(cursor.getString(index_name))
-                    .icon(BitmapDescriptorFactory.defaultMarker(120)));
+                    .icon(BitmapDescriptorFactory.defaultMarker(markerColor)));
             markerList.add(marker);
             cursor.moveToNext();
         }
@@ -271,7 +300,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             JSONArray jsonArray = geojsonData.getJSONArray("features").getJSONObject(0)
                     .getJSONObject("geometry").getJSONArray("coordinates");
             List<LatLng> latLngList = new ArrayList<>();
-            for(int i = 0; i < jsonArray.length(); i++){
+            for (int i = 0; i < jsonArray.length(); i++) {
                 double longitude = Double.parseDouble(jsonArray.getJSONArray(i).get(0).toString());
                 double latitude = Double.parseDouble(jsonArray.getJSONArray(i).get(1).toString());
                 latLngList.add(new LatLng(latitude, longitude));
@@ -280,55 +309,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     .addAll(latLngList)
                     .clickable(false)
                     .color(R.color.background_green));
-            /*GeoJsonLayer routeLayer = new GeoJsonLayer(gMap, geojsonData);
-            GeoJsonLineStringStyle lineStyle = routeLayer.getDefaultLineStringStyle();
-            lineStyle.setColor(R.color.background_green);
-            routeLayer.addLayerToMap();*/
         } catch (Exception e) {
-            System.out.println(e);
             e.printStackTrace();
-        }
-    }
-
-    private class DownloadGeoJsonFile extends AsyncTask<String, Void, GeoJsonLayer> {
-
-        @Override
-        protected GeoJsonLayer doInBackground(String... params) {
-            try {
-                // Open a stream from the URL
-                InputStream stream = new URL(params[0]).openStream();
-
-                String line;
-                StringBuilder result = new StringBuilder();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
-
-                while ((line = reader.readLine()) != null) {
-                    // Read and save each line of the stream
-                    result.append(line);
-                }
-
-                // Close the stream
-                reader.close();
-                stream.close();
-
-                return new GeoJsonLayer(mMap, new JSONObject(result.toString()));
-            } catch (IOException e) {
-                Log.e("mLogTag", "GeoJSON file could not be read");
-            } catch (JSONException e) {
-                Log.e("mLogTag", "GeoJSON file could not be converted to a JSONObject");
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(GeoJsonLayer layer) {
-            if (layer != null) {
-                GeoJsonLineStringStyle lineStringStyle = layer.getDefaultLineStringStyle();
-                lineStringStyle.setColor(Color.RED);
-                lineStringStyle.setWidth(10f);
-
-                layer.addLayerToMap();
-            }
         }
     }
 

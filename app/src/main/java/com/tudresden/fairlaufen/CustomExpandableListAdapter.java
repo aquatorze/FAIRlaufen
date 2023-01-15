@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
@@ -17,6 +18,7 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
     private final Context context;
     private final List<String> expandableListTitle;
     private final HashMap<String, List<String>> expandableListDetail;
+    private int id = 0;
 
     public CustomExpandableListAdapter(Context context, List<String> expandableListTitle,
                                        HashMap<String, List<String>> expandableListDetail) {
@@ -87,6 +89,13 @@ public class CustomExpandableListAdapter extends BaseExpandableListAdapter {
                 .findViewById(R.id.listTitle);
         listTitleTextView.setTypeface(null, Typeface.BOLD);
         listTitleTextView.setText(listTitle);
+        try {
+            CheckBox checkBox = (CheckBox) convertView.findViewById(R.id.checkbox);
+            System.out.println(checkBox.getId());
+            checkBox.setId(listPosition);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         return convertView;
     }
 

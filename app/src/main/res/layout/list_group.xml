@@ -14,7 +14,7 @@
             android:textColor="@android:color/black"
             android:textSize="15dp"
             android:paddingTop="10dp"
-            android:paddingBottom="10dp" />
+            android:paddingBottom="10dp"/>
 
     <CheckBox
             android:id="@+id/checkbox"
@@ -22,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:focusable="false"
-            android:button="@drawable/custom_checkbox_theme"/>
-
+            android:button="@drawable/custom_checkbox_theme"
+            android:onClick="onClickCheckbox"/>
 
 </RelativeLayout>

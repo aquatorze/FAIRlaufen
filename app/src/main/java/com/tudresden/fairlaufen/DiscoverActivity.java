@@ -43,8 +43,9 @@ public class DiscoverActivity extends AppCompatActivity {
             }
         });
 
-
     }
+
+
 
     public void onClickToMap(){
         //Hier Funktion für Karte einsetzen

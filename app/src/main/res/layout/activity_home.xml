@@ -12,7 +12,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10sp"
-            android:paddingLeft="20sp"
+            android:paddingLeft="45sp"
             android:textSize="35sp"
             android:text="@string/app_name"
             android:textColor="@color/text_black"
@@ -20,7 +20,7 @@
 
         <RelativeLayout
             android:id="@+id/citytour"
-            android:layout_width="350sp"
+            android:layout_width="300sp"
             android:layout_height="250sp"
             android:layout_gravity="center"
             android:layout_marginBottom="20sp"
@@ -32,7 +32,7 @@
                 android:id="@+id/title_citytour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
+                android:layout_marginLeft="15sp"
                 android:layout_marginTop="20sp"
                 android:textSize="25sp"
                 android:clickable="false"
@@ -45,7 +45,7 @@
                 android:layout_width="180sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title_citytour"
-                android:layout_marginLeft="25sp"
+                android:layout_marginLeft="15sp"
                 android:layout_marginTop="40sp"
                 android:clickable="false"
                 android:text="@string/button_text_citytour"
@@ -56,7 +56,6 @@
                 android:id="@+id/icon_citytour"
                 android:layout_width="93dp"
                 android:layout_height="77dp"
-                android:layout_marginLeft="10dp"
                 android:layout_marginTop="100sp"
                 android:layout_toRightOf="@id/text_citytour"
                 android:clickable="false"
@@ -65,7 +64,7 @@
 
         <RelativeLayout
             android:id="@+id/discover"
-            android:layout_width="350sp"
+            android:layout_width="300sp"
             android:layout_height="250sp"
             android:layout_gravity="center"
             android:layout_marginBottom="20sp"
@@ -75,7 +74,7 @@
                 android:id="@+id/title_discover"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="25sp"
+                android:layout_marginLeft="15sp"
                 android:layout_marginTop="20sp"
                 android:text="@string/button_title_discover"
                 android:textColor="@color/text_black"
@@ -87,7 +86,7 @@
                 android:layout_width="180sp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/title_discover"
-                android:layout_marginLeft="25sp"
+                android:layout_marginLeft="15sp"
                 android:layout_marginTop="30sp"
                 android:text="@string/button_text_discover"
                 android:textColor="@color/text_black"
@@ -98,7 +97,6 @@
                 android:layout_width="93dp"
                 android:layout_height="77dp"
                 android:layout_marginTop="100sp"
-                android:layout_marginLeft="10sp"
                 android:layout_toRightOf="@id/text_discover"
                 android:src="@drawable/icon_discover" />
         </RelativeLayout>

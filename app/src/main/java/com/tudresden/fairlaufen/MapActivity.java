@@ -127,19 +127,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     }
                     switch(i){
                         case 0:
-                            searchTerm += "category LIKE 'Second Hand'";
+                            searchTerm += "category LIKE 'Essen & Trinken'";
                             break;
                         case 1:
-                            searchTerm += "category LIKE 'Kosmetik'";
-                            break;
-                        case 2:
-                            searchTerm += "category LIKE 'Bekleidung'";
-                            break;
-                        case 3:
                             searchTerm += "category LIKE 'Lebensmittel'";
                             break;
+                        case 2:
+                            searchTerm += "category LIKE 'Kosmetik'";
+                            break;
+                        case 3:
+                            searchTerm += "category LIKE 'Second Hand'";
+                            break;
                         case 4:
-                            searchTerm += "category LIKE 'Essen & Trinken'";
+                            searchTerm += "category LIKE 'Bekleidung'";
                             break;
                         case 5:
                             searchTerm += "category LIKE 'Sonstiges'";
@@ -147,7 +147,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                     }
                 }
             }
-            dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE " + searchTerm, null);
+            if(searchTerm.equals("")){
+                dbCursor = database.rawQuery("SELECT * FROM fairPLaces;", null);
+            }
+            else {
+                dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE " + searchTerm, null);
+            }
 
         }
 

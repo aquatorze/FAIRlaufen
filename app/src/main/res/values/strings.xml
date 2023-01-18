@@ -7,5 +7,6 @@
     <string name="button_text_discover">Entdecke nachhaltige Orte in Dresden Neustadt</string>
     <string name="button_tour1">Alternativ für Anfänger:innen</string>
     <string name="button_tour2">FAIRkleidet</string>
+    <string name="button_discover">Zur Karte</string>
     <string name="popup_text">Willkommen bei FAIRlaufen!\n\nDiese App zeigt Dir verschiedene nachhaltige Orte in Dresden-Neustadt. Vom Secondhand-Shop bis zum nachhaltigen Café findest Du hier alles, was Dein umweltbewusstes Herz höher schlagen lässt.\n\nWir wünschen Dir viel Spaß beim Erkunden, dein FAIRlaufen-Team!</string>
 </resources>

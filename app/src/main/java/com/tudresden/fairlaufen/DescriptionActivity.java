@@ -47,7 +47,6 @@ public class DescriptionActivity extends AppCompatActivity {
         TextView BeschreibungTextView = findViewById(R.id.Beschreibung);
         TextView AdresseTextView = findViewById(R.id.Adresse);
         TextView WebdresseTextView = findViewById(R.id.Webadresse);
-        //ImageView BildImageView = findViewById(R.id.Bild);
 
         //get string of the columns
         if (dbCursor.moveToFirst()) { // check if the cursor is empty
@@ -58,16 +57,10 @@ public class DescriptionActivity extends AppCompatActivity {
             String url = dbCursor.getString(dbCursor.getColumnIndex("url"));
 
 
-            //retrieve image data as a byte array
-            //byte[] photos= dbCursor.getBlob(dbCursor.getColumnIndex("image"));
-            //convert the byte array to bitmap object
-            //Bitmap imagebitmap = BitmapFactory.decodeByteArray(photos, 0, photos.length);
-
 
             //set text to textviews
             NamenTextView.setText(name);
             KategorieTextView.setText(category);
-            //BildImageView.setImageBitmap(imagebitmap);
             BeschreibungTextView.setText(description);
             AdresseTextView.setText(adress);
             WebdresseTextView.setText(url);
@@ -78,4 +71,3 @@ public class DescriptionActivity extends AppCompatActivity {
 
     }
 }
-

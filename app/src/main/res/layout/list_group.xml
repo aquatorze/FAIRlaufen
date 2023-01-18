@@ -11,7 +11,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-            android:textColor="@android:color/black"
+            android:textColor="@color/text_black"
             android:textSize="15dp"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"/>

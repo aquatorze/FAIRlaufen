@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    tools:context=".DiscoverActivity"
-    android:id="@+id/discover_screen">
-
-    <TextView
-        android:id="@+id/text_view_id"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:text="DISCOVER"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        android:textSize="30dp"
-        android:background="#B4C7E7"
-        android:gravity="center"
-        />
-    <ExpandableListView
-        android:id="@+id/expandableListView"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
-        android:divider="#7F7F7F"
-        android:dividerHeight="0.5dp"
-        android:childDivider="#7F7F7F"
-        android:layout_below="@id/text_view_id"/>
-    <Button
-        android:id="@+id/button_Discover"
-        android:text="Zur Karte"
-        android:onClick="onClickToMap"
-        android:layout_below="@+id/expandableListView"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="330dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-</RelativeLayout>
+        tools:context=".DiscoverActivity"
+        android:id="@+id/discover_screen">
 
+        <TextView
+            android:id="@+id/text_view_id"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:text="@string/button_title_discover"
+            android:paddingLeft="45sp"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_black"
+            />
+        <ExpandableListView
+            android:id="@+id/expandableListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"
+            android:divider="#7F7F7F"
+            android:dividerHeight="0.5dp"
+            android:childDivider="#7F7F7F"
+            android:layout_below="@id/text_view_id"
+            android:layout_above="@id/button_Discover"/>
+        <Button
+            android:id="@+id/button_Discover"
+            android:text="@string/button_discover"
+            android:onClick="onClickToMap"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+</ScrollView>
 
 
 

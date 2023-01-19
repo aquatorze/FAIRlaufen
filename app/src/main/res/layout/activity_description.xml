@@ -55,7 +55,8 @@
             android:textColor="@color/text_black"
             android:textSize="18sp"
             android:layout_marginTop="40dp"
-            android:layout_marginLeft="30dp"/>
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"/>
 
         <TextView
             android:id="@+id/Adresse"

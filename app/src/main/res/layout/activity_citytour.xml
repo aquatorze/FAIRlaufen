@@ -1,68 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".CitytourActivity"
+    android:background="@color/background_grey"
+    android:id="@+id/citytour_screen">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:textSize="35sp"
+        android:text="@string/button_title_citytour"
+        android:textColor="@color/text_black"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".CitytourActivity"
-        android:background="@color/background_grey"
-        android:id="@+id/citytour_screen">
+        android:padding="20dp">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/tour1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_title_citytour"
-            android:textColor="@color/text_black"
-            android:layout_margin="10sp"
-            android:paddingLeft="45sp"
-            android:textSize="35sp"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:id="@+id/tour1"
-            android:layout_width="300sp"
-            android:layout_height="250sp"
-            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
             android:background="@color/background_green"
-            android:layout_marginBottom="20sp"
+            android:orientation="vertical"
+            android:padding="30dp"
             android:onClick="onClickMap">
 
             <TextView
                 android:id="@+id/title_tour1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="25sp"
                 android:gravity="center"
                 android:text="@string/button_tour1"
                 android:textColor="@color/text_black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_alternativ"
-                android:layout_below="@id/title_tour1"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15sp"
-                android:layout_marginBottom="25sp"
-                />
-        </RelativeLayout>
+                android:layout_marginTop="25sp"/>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:id="@+id/tour2"
-            android:layout_width="300sp"
-            android:layout_height="250sp"
-            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
             android:background="@color/background_green"
-            android:layout_marginBottom="20sp"
+            android:orientation="vertical"
+            android:padding="30dp"
             android:onClick="onClickMap">
 
             <TextView
                 android:id="@+id/title_tour2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="25sp"
-                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
                 android:text="@string/button_tour2"
                 android:textColor="@color/text_black"
                 android:textSize="25sp"
@@ -72,10 +77,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/icon_shopping"
-                android:layout_below="@id/title_tour2"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="15sp"
-                android:layout_marginBottom="25sp"
-                />
-        </RelativeLayout>
+                android:layout_marginTop="25sp"/>
+        </LinearLayout>
     </LinearLayout>
+</LinearLayout>

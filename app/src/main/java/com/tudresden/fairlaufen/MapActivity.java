@@ -280,6 +280,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         Intent intent = new Intent(this, DescriptionActivity.class);
         intent.putExtra("id", id);
+        intent.putExtra("name", marker.getTitle());
         startActivity(intent);
     }
 

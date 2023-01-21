@@ -32,13 +32,13 @@ public class DescriptionActivity extends AppCompatActivity {
 
         //Intent von der MapActivity, es wird die ID des angeklickten Ortes übergeben
         Intent intent = getIntent();
-        int id = intent.getIntExtra("id",1);
+        String intentName = intent.getStringExtra("name");
 
 
         dbHelper = new DatabaseHelper(this);
         database = dbHelper.getReadableDatabase();// initialize the database object
-        dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE place_ID = ?",
-                new String[] {String.valueOf(id)});
+        dbCursor = database.rawQuery("SELECT * FROM fairPlaces WHERE name LIKE ?",
+                new String[] {intentName});
 
 
         //define different Text Views from xml file

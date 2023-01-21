@@ -10,13 +10,14 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HomeActivity extends AppCompatActivity {
-    RelativeLayout rl_citytour;
-    RelativeLayout rl_discover;
+    LinearLayout rl_citytour;
+    LinearLayout rl_discover;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
 
         showPopup();
 
-        rl_citytour = (RelativeLayout) findViewById(R.id.citytour);
+        rl_citytour = (LinearLayout) findViewById(R.id.citytour);
         rl_citytour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        rl_discover = (RelativeLayout) findViewById(R.id.discover);
+        rl_discover = (LinearLayout) findViewById(R.id.discover);
         rl_discover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,104 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/home_screen"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_screen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_grey"
+    android:orientation="vertical"
+    tools:context=".HomeActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:textSize="35sp"
+        android:text="@string/app_name"
+        android:textColor="@color/text_black"
+        android:textStyle="bold" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_grey"
         android:orientation="vertical"
-        tools:context=".HomeActivity">
+        android:padding="20dp">
 
-        <TextView
+        <LinearLayout
+            android:id="@+id/citytour"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10sp"
-            android:paddingLeft="45sp"
-            android:textSize="35sp"
-            android:text="@string/app_name"
-            android:textColor="@color/text_black"
-            android:textStyle="bold" />
-
-        <RelativeLayout
-            android:id="@+id/citytour"
-            android:layout_width="300sp"
-            android:layout_height="250sp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20sp"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
             android:background="@color/background_green"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/title_citytour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15sp"
-                android:layout_marginTop="20sp"
                 android:textSize="25sp"
                 android:clickable="false"
                 android:text="@string/button_title_citytour"
                 android:textColor="@color/text_black"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text_citytour"
-                android:layout_width="180sp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title_citytour"
-                android:layout_marginLeft="15sp"
-                android:layout_marginTop="40sp"
-                android:clickable="false"
-                android:text="@string/button_text_citytour"
-                android:textColor="@color/text_black"
-                android:textSize="25sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
 
-            <ImageView
-                android:id="@+id/icon_citytour"
-                android:layout_width="93dp"
-                android:layout_height="77dp"
-                android:layout_marginTop="100sp"
-                android:layout_toRightOf="@id/text_citytour"
-                android:clickable="false"
-                android:src="@drawable/icon_city_tour" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/text_citytour"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:text="@string/button_text_citytour"
+                    android:textColor="@color/text_black"
+                    android:textSize="25sp"
+                    android:layout_gravity="center_vertical"/>
 
-        <RelativeLayout
+                <ImageView
+                    android:id="@+id/icon_citytour"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:src="@drawable/icon_city_tour"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/discover"
-            android:layout_width="300sp"
-            android:layout_height="250sp"
-            android:layout_gravity="center"
-            android:layout_marginBottom="20sp"
-            android:background="@color/background_bluegrey">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:layout_weight="1"
+            android:background="@color/background_bluegrey"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical"
+            android:padding="20dp">
 
             <TextView
                 android:id="@+id/title_discover"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15sp"
-                android:layout_marginTop="20sp"
+                android:clickable="false"
                 android:text="@string/button_title_discover"
                 android:textColor="@color/text_black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/text_discover"
-                android:layout_width="180sp"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/title_discover"
-                android:layout_marginLeft="15sp"
-                android:layout_marginTop="30sp"
-                android:text="@string/button_text_discover"
-                android:textColor="@color/text_black"
-                android:textSize="25sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:paddingTop="20dp">
 
-            <ImageView
-                android:id="@+id/icon_discover"
-                android:layout_width="93dp"
-                android:layout_height="77dp"
-                android:layout_marginTop="100sp"
-                android:layout_toRightOf="@id/text_discover"
-                android:src="@drawable/icon_discover" />
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/text_discover"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:text="@string/button_text_discover"
+                    android:textColor="@color/text_black"
+                    android:textSize="25sp"
+                    android:layout_gravity="center_vertical" />
 
+                <ImageView
+                    android:id="@+id/icon_discover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="false"
+                    android:src="@drawable/icon_discover"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
+</LinearLayout>
